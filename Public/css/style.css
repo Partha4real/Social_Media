@@ -1,0 +1,82 @@
+*{ 
+    margin: 0; 
+    padding: 0; 
+    border: 0; 
+  }
+  
+body{
+    font-family: 'Poppins', sans-serif;
+}
+a{
+    text-decoration: none!important;
+}
+
+.post-content{
+    padding-top: 1rem;
+}
+.hello{
+    color: lightblue;
+}
+.user-name{
+    font-size: 20px;
+    color: grey;
+    font-weight: bold;
+}
+.index-profilePic{
+    width: 80%;
+    border-radius: 1rem;
+    margin: 10px;
+}
+.create-post-link{
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(138, 223, 238);
+    border-radius: 1rem;
+    padding: 8px 8px;
+    margin-left: 1.5rem;
+}
+
+
+.all-posts{
+    padding: 1rem;
+}
+.heading{
+    height: 3rem;
+    background-color: black;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.heading-title{
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+.posts{
+    margin: 1.5rem 0;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 1rem;
+}
+.post-user{
+    font-weight: bold;
+}
+.createdAt{
+    font-size: 10px;
+    font-style: italic;
+}
+.post-content_text{
+    margin: 15px;
+    font-size: 15px;
+    color: grey;
+}
+
+.post-comment{
+    margin: 10px;
+}
+.send-comment-icon{
+    color: rgb(255, 255, 255);
+    padding: none;
+    box-shadow: none;
+    font-size: 20px;
+}

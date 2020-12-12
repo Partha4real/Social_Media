@@ -82,7 +82,9 @@ app.set('view engine', 'ejs');
 
 // routes
 app.use('/', require('./routes/user'));
-app.use('/feed', require('./routes/feed'));
+app.use('/posts', require('./routes/posts'));
+app.use('/comments', require('./routes/comment'));
+app.use('/profile', require('./routes/profile'));
 
 
 // PORT

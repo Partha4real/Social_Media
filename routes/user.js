@@ -11,7 +11,7 @@ const {isUser} = require('../config/auth');
 //@access   PUBLIC
 router.get('/', (req, res) => {
     if (res.locals.user) {
-        res.redirect('/feed/');
+        res.redirect('/posts/');
     } else {
         res.render('register',{
             title: 'Register'
@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 //@route    POST /user/register
 //@access   PUBLIC
 router.post('/register', async (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
     const {name, email, password, passwordConfirmation} = req.body;
     let errors = [];
 
@@ -97,7 +97,7 @@ router.post('/register', async (req, res) => {
 //@access   PUBLIC
 router.post('/login', async(req, res, next) => {
     passport.authenticate('local', {
-        successRedirect: '/feed',
+        successRedirect: '/posts',
         failureRedirect: '/',
         failureFlash: true
     })(req, res, next);

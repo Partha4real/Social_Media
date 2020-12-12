@@ -1,0 +1,21 @@
+<%- include('./_layouts/header'); %>
+<%- include('./partials/messages'); %>
+
+<div class="create-post">
+    <form action="/posts/create-post" method="post">
+        <!-- content -->
+        <div class="from-group">
+            <label for="">Content</label>
+            <textarea name="content" class="form-control" cols="50" rows="10"  placeholder="Content"></textarea>
+        </div>
+        <div class="from-group">
+            <label for="postImg">Post Picture</label>
+            <input type="text" class="form-control" name="postImg" 
+               onchange="document.getElementById('imgPreview').src = window.URL.createObjectURL(this.files[0]); document.getElementById('imgPreview').setAttribute('style', 'width: 100px');">  <!--preview image -->
+            <img id="imgPreview">
+         </div>
+        <input type="submit" class="btn btn-success" value="create-post">
+    </form>
+</div>
+
+<%- include('./_layouts/footer'); %>
