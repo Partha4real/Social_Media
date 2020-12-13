@@ -61,6 +61,12 @@ a{
 .post-user{
     font-weight: bold;
 }
+.post-menu .post-menu-icon{
+    margin-left: 1rem;
+}
+.post-menu a{
+    color: lightcoral;
+}
 .createdAt{
     font-size: 10px;
     font-style: italic;
@@ -74,9 +80,42 @@ a{
 .post-comment{
     margin: 10px;
 }
+
+.comment-input{
+    padding: 10px;
+}
+.send-comment-button{
+    background-color: black;
+    border-radius: 5px;
+    padding: 5px;
+}
 .send-comment-icon{
     color: rgb(255, 255, 255);
     padding: none;
     box-shadow: none;
     font-size: 20px;
+}
+
+.post-comment-list{
+    margin: 15px;
+    padding: 10px;
+    background-color: rgba(211, 211, 211, 0.241);
+    border-radius: 1rem;
+}
+.individual-comment{
+    background-color: lightgray;
+    border-radius: 4px;
+}
+.comment-username{
+    margin: 5px;
+    font-weight: bold;
+}
+.createdAtComment{ 
+    margin: 10px;
+    font-size: 10px;
+    font-style: italic;
+}
+.comment-comtent{
+    margin-left: 10px;
+    margin-bottom: 5px;
 }

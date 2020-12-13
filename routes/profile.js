@@ -103,7 +103,7 @@ router.post('/edit-profile/:id', async(req, res) => {
                     id
                 })
             } else {
-                console.log(req.body.profilepic)
+                //console.log(req.body.profilepic)
                 let user = await User.findById(id);
                     user.name = name;
                     user.email = email;

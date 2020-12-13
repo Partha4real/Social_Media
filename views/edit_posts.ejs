@@ -1,0 +1,20 @@
+<%- include('./_layouts/header'); %>
+<%- include('./partials/messages'); %>
+
+<div class="edit-post p-4">
+    <a href="/posts" class="btn btn-warning">Home</a>
+    <form action="/posts/edit-post/<%= id %>" method="post">
+        <!-- content -->
+        <div class="from-group mt-2">
+            <label for="">Content</label>
+            <textarea name="content" class="form-control" cols="50" rows="10"  placeholder="Content" required><%= typeof content != 'undefined' ? content : '' %></textarea>
+        </div>
+        <div class="from-group mt-2">
+            <label for="postImg">Post Picture</label>
+            <input type="text" class="form-control" name="postImg" value="<%= typeof postImg != 'undefined' ? postImg : '' %>">  
+         </div>
+        <input type="submit" class="btn btn-success mt-2" value="Update">
+    </form>
+</div>
+
+<%- include('./_layouts/footer'); %>

@@ -84,6 +84,7 @@ app.set('view engine', 'ejs');
 app.use('/', require('./routes/user'));
 app.use('/posts', require('./routes/posts'));
 app.use('/comments', require('./routes/comment'));
+app.use('/likes', require('./routes/likes'));
 app.use('/profile', require('./routes/profile'));
 
 

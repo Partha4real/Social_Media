@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <h7 class="hello">hello,</h7> <br>
-                <% if (user) { %>
+                <% if (locals.user) { %>
                     <span class="user-name" ><%= user.name %>,</span>
                 <% } %>
                 <img src="<%= user.profilepic %>" class="img-fluid mx-auto d-block index-profilePic" alt="profile"> <br> <br>
@@ -13,27 +13,67 @@
                 <div class="heading"><span class="heading-title">Posts</span></div>
                 <% for(let i of post){ %>
                     <div class="col-lg-12 posts" >
-                        <span class="post-user"><%= i.user.name %></span><div class="float-right"><span class="createdAt" float="right"><%= (i.createdAt).toDateString() %></span></div>
+                        <span class="post-user"><%= i.user.name %></span>
+                        <div class="float-right">
+                            <% if (locals.user && locals.user.id == i.user._id) { %>
+                                <div class="post-menu">
+                                    <a href="/posts/edit-post/<%= i._id %>"><i class="far fa-edit post-menu-icon" id="post-edit-icon"></i></a>
+                                    <a href="/posts/delete-post/<%= i._id %>"><i class="far fa-trash-alt post-menu-icon"></i></i></a> <br>
+                                </div>
+                            <% } %>
+
+                            <span class="createdAt" float="right"><%= (i.createdAt).toDateString() %></span>
+                        </div>
                         <p class="post-content_text"><%= i.content %></p>
                         <% if (i.postImg !== "") { %>
                             <img src="<%= i.postImg %>" class="img-fluid post_image p-2">
                         <% } %>
+                        <a class="toggle-like-button" data-likes="<%= i.likes.length %>" href="/likes/toggleLikes?id=<%=i._id%>&type=Post">
+                            <%= i.likes.length %> Likes
+                        </a>
                         <div class="post-comment">
-                            <form action="/comments/create" method="POST">
+                            <form action="/comments/create" class="send-comment-form" method="POST">
                                <div class="row">
                                 <div class="col-lg-10">
-                                    <input class="form-control" type="text" name="content" placeholder="Type here to add comment..">
+                                    <input class="form-control comment-input" type="text" name="content" placeholder="Type here to add comment.." required>
                                 </div>
-                                <input type="hidden" name="post_id" value="<&= i._id %>">
-                                <div class="col-lg-1">
-                                    <button class="form-control btn btn-dark" type="submit" value="add-comment"><span class="send-comment-icon"><i class="fas fa-angle-right"></i></span></button>
+                                <input type="hidden" name="post_id" value="<%= i._id %>">
+                                <div class="col-lg-2">
+                                    <button class="send-comment-button" type="submit" value="add-comment"><span class="send-comment-icon"><i class="fas fa-angle-right"></i></span></button>
                                 </div>
                                </div>
                             </form>
+                        </div>
+                        <div class="post-comment-list">
+                            <ul id="post-comment-<%= i._id %>">
+                                <% for(let comment of i.comments){ %>
+                                    <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggleLikes?id=<%=comment._id%>&type=Comment">
+                                        <%= comment.likes.length %> Likes
+                                    </a>
+                                    <div class="individual-comment">
+                                        <small class="comment-username"><%= comment.user.name %></small>
+                                        <div class="float-right">
+                                            <span class="createdAtComment" float="right"><%= (comment.createdAt).toLocaleTimeString() %> <%= (comment.createdAt).toDateString() %></span>
+                                            <% if (locals.user && locals.user.id == comment.user._id) { %>
+                                                    <a href="/comments/delete-comment/<%= comment._id %>"><i class="fas fa-minus-circle post-menu-icon" style="color: red; margin: 8px;"></i></i></a>
+                                            <% } %>
+                                        </div> <br>
+                                        <p class="comment-comtent"><%= comment.content %></p>
+                                    </div>
+                                <% } %>
+                            </ul>
                         </div>
                     </div>
                 <% } %>
             </div>
         </div>
     </div>
+
+<script src="/js/toggle_likes.js"></script>
+<script>
+    $('.toggle-like-button').each(function(){
+        let self = this;
+        let toggleLike = new ToggleLike(self);
+    });
+</script>
 <%- include('./_layouts/footer'); %>

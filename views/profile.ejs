@@ -1,11 +1,11 @@
 <%- include('./_layouts/header'); %>
     <div class="container">
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-lg-4 m-2">
                 <img src="<%= user.profilepic %>" alt="" class="img-fluid">
             </div>
             <div class="col-lg-7 m-2">
-                <ul class="list-group">
+                <ul class="">
                     <a href="/profile/edit-profile/<%= user._id %>" class="">Edit</a>
                     <li class="list-group-item"><h5>Name: </h5> <span><%= user.name %></span></li>
                     <li class="list-group-item"><h5>Email: </h5> <span><%= user.email %></span></li>
