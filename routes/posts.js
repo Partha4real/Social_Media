@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const User = require('../models/user');
+const Friend = require('../models/friends');
 const Post = require('../models/post');
 const Like = require('../models/like');
 const Comment = require('../models/comment');
@@ -19,25 +20,27 @@ router.get('/', isUser, async(req, res) => {
         try {
             let post = await Post.find()
                 .populate('user')
+                .sort('-createdAt')
                 .populate({
                     path: 'comments',
                     populate: {
-                        path: 'user'
+                        path: 'likes',
                     },
                     populate: {
-                        path: 'likes'
-                    }
+                        path: 'user',
+                    },
                 })
-                .populate('comments')
                 .populate('likes')
-
-                .sort('-createdAt');
             
-            let users = await User.find({});
+            let friends = await Friend.find({requester: req.user.id})
+                .populate('recipient');
+
+            let users = await User.find({_id: {'$ne':req.user.id}});
             res.render('index', {
                 title: 'SocialMedia',
                 post,
-                users
+                users,
+                friends
             }); 
         } catch (err) {
             console.log(err);
@@ -162,19 +165,20 @@ router.get('/delete-post/:id', isUser, async(req, res) => {
         try {
             let post = await Post.findById(id)
             // .id means converting the object id into string
-            if(post.user == req.user.id) {
-                let arr =post.comments;
-                console.log('arr '+arr);
-                await Like.deleteMany({_id: {$in: arr}});
-                await Like.deleteMany({likeable: post, onModel: 'Post'});
+            //if(post.user == req.user.id) {
+              
+                await Like.deleteMany({likeable: {$in: post.comments}});
+                console.log(post.comments);
+              
+                await Like.deleteMany({likeable: post._id, onModel: 'Post'});
 
                 post.remove();
                 Comment.deleteMany({post:id}, (err) => {
                     return res.redirect('back');
                 })
-            } else {
-                return res.redirect('back');
-            }
+            // } else {
+            //     return res.redirect('back');
+            // }
         } catch (err) {
             console.error(err);
         }

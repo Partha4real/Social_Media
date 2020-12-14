@@ -2,21 +2,21 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-lg-4 m-2">
-                <img src="<%= user.profilepic %>" alt="" class="img-fluid">
+                <img src="<%= user.profilepic %>" alt="" class="img-fluid mx-auto d-block" style="width: 300px; height: 300px; border-radius: 150px; border: 5px solid rgba(106, 103, 103, 0.645);"> <br> <br>
+                <a href="/profile/edit-profile/<%= user._id %>" class="btn btn-primary btn-block">Edit Profile</a>
             </div>
             <div class="col-lg-7 m-2">
-                <ul class="">
-                    <a href="/profile/edit-profile/<%= user._id %>" class="">Edit</a>
-                    <li class="list-group-item"><h5>Name: </h5> <span><%= user.name %></span></li>
-                    <li class="list-group-item"><h5>Email: </h5> <span><%= user.email %></span></li>
-                    <li class="list-group-item"><h5>Username: </h5> <span><%= user.username %></span></li>
-                    <li class="list-group-item"><h5>Country: </h5> <span><%= user.country %></span></li>
-                    <li class="list-group-item"><h5>Languages: </h5> <span><%= user.languages %></span></li>
-                    <li class="list-group-item"><h5>Gender: </h5> <span><%= user.gender %></span></li>
-                    <li class="list-group-item"><h5>DOB: </h5> <span><%= user.dob %></span></li>
-                    <li class="list-group-item"><h5>Facebook: </h5> <span><%= user.social.facebook %></span></li>
-                    <li class="list-group-item"><h5>Instagram: </h5> <span><%= user.social.instagram %></span></li>
-                    <li class="list-group-item"><h5>Youtube: </h5> <span><%= user.social.youtube %></span></li>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" style="padding: 10px;"><h5>Name: </h5> <span class="text-info ml-2"><%= user.name %></span></li>
+                    <li class="list-group-item" style="padding: 10px;"><h5>Email: </h5> <span class="text-info ml-2"><%= user.email %></span></li>
+                    <li class="list-group-item" style="padding: 10px;"><h5>Username: </h5> <span class="text-info ml-2"><%= user.username %></span></li>
+                    <li class="list-group-item" style="padding: 10px;"><h5>Country: </h5> <span class="text-info ml-2"><%= user.country %></span></li>
+                    <li class="list-group-item" style="padding: 10px;"><h5>Languages: </h5> <span class="text-info ml-2"><%= user.languages %></span></li>
+                    <li class="list-group-item" style="padding: 10px;"><h5>Gender: </h5> <span class="text-info ml-2"><%= user.gender %></span></li>
+                    <li class="list-group-item" style="padding: 10px;"><h5>DOB: </h5> <span class="text-info ml-2"><%= user.dob %></span></li>
+                    <li class="list-group-item" style="padding: 10px;"><h5>Facebook: </h5> <span class="text-info ml-2"><%= user.social.facebook %></span></li>
+                    <li class="list-group-item" style="padding: 10px;"><h5>Instagram: </h5> <span class="text-info ml-2"><%= user.social.instagram %></span></li>
+                    <li class="list-group-item" style="padding: 10px;"><h5>Youtube: </h5> <span class="text-info ml-2"><%= user.social.youtube %></span></li>
                 </ul>
 
             </div>

@@ -11,9 +11,9 @@ a{
     text-decoration: none!important;
 }
 
-.post-content{
-    padding-top: 1rem;
-}
+/* .post-content{
+   
+} */
 .hello{
     color: lightblue;
 }
@@ -36,9 +36,9 @@ a{
 }
 
 
-.all-posts{
-    padding: 1rem;
-}
+/* .all-posts{
+   
+} */
 .heading{
     height: 3rem;
     background-color: black;
@@ -88,6 +88,7 @@ a{
     background-color: black;
     border-radius: 5px;
     padding: 5px;
+    width: 4rem;
 }
 .send-comment-icon{
     color: rgb(255, 255, 255);

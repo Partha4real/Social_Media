@@ -64,6 +64,7 @@
 
                                 <% } %>
                             </ul>
+                        </div>
                         <% } else { %>
                             <div style="display: none;"></div>
                         <% } %>
@@ -71,6 +72,23 @@
                 <% } %>
             </div>
             <div class="col-lg-3 all-users">
+                <div class="friends">
+                    <ul class="list-group">
+                        <h4>Friends</h4>
+                        <% for(let friend of friends){ %>
+                            <li class="list-group-item list-group-item-secondary">
+                                <img src="<%= friend.recipient.profilepic %>" class="img-fluid" style="width: 2rem; height: 2rem; border-radius: 1rem;" alt="">
+                                &nbsp;<span style="font-size: smaller;"><%= friend.recipient.name %></span>
+                                <% if (friend.status == 1) { %>
+                                    <button class="btn btn-success float-right">Requested</button>
+                                <% } %>
+                            </li>
+                        <% } %>
+                    </ul>
+                </div>
+
+                <br> <br>
+
                 <div class="all-users">
                     <h4>All-Users</h4>
                     <ul class="list-group">

@@ -29,15 +29,15 @@ app.use(session({
     secret: 'secret',
     resave: false,
     saveUninitialized: true,  
-    // cookie: {maxAge: 1000 * 60 * 60 * 24},   //not requires
-    // store: new MongoStore( {
-    //     mongooseConnection: mongoose.connection,
-    //     //connection: 'sessions',    //A name of collection used for storing sessions.
-    //     autoRemove:'disabled'
-    // },
-    // (err)=>{
-    //     console.log(err || 'Connected To MongoStore');
-    // })
+    cookie: {maxAge: 1000 * 60 * 60 * 24},   //not requires
+    store: new MongoStore( {
+        mongooseConnection: mongoose.connection,
+        //connection: 'sessions',    //A name of collection used for storing sessions.
+        autoRemove:'disabled'
+    },
+    (err)=>{
+        console.log(err || 'Connected To MongoStore');
+    })
 }));
 
 
@@ -86,6 +86,7 @@ app.use('/posts', require('./routes/posts'));
 app.use('/comments', require('./routes/comment'));
 app.use('/likes', require('./routes/likes'));
 app.use('/profile', require('./routes/profile'));
+app.use('/friends', require('./routes/friends'));
 
 
 // PORT
